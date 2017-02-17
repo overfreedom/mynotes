@@ -1,4 +1,10 @@
 eclipse.preferences.version=1
+encoding//python/QWidget\u9002\u7528\u4E8E\u5E03\u5C40\u7EC4\u4EF6.py=utf-8
+encoding//python/Qt(MRO\u5F02\u5E38\u7684\u539F\u56E0).py=utf-8
 encoding//python/requests\u6A21\u5757get\u4E71\u7801\u95EE\u9898.py=utf-8
 encoding//python/\u4F7F\u7528\u4EE3\u7406.py=utf-8
+<<<<<<< HEAD
 encoding//temp/WantDo.md=GBK
+=======
+encoding/python=utf-8
+>>>>>>> branch 'master' of https://github.com/overfreedom/mynotes
