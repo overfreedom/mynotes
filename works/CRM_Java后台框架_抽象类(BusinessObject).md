@@ -1,4 +1,4 @@
-CRM JAVA 后台框架概述 抽象类：
+CRM JAVA 后台框架概述 抽象类：BusinessObject
 ==========
 -----------
 *	符号定义
@@ -111,5 +111,30 @@ CRM JAVA 后台框架概述 抽象类：
 
 >返回一个字符串为临时表名
 
- 
+    public static java.util.Date strToDate(String strDate)
+  
+>字符串转换成日期函数 格式为`yyyy-MM-dd HH:mm:ss`、`yyyy-MM-dd HH:mm`和`yyyy-MM-dd`都可以转。其实就是封装了`SimpleDateFormat`而已。
 
+	public CPCUserBean getUserBean() {
+		return (CPCUserBean) this.getUserInfo();
+	}
+	getUserBean().getUserId();  //得到当前用户的名称  返回字符串
+	getUserBean().getSysUserId();//得到当前用户的ID 返回int
+>取当前用户信息，这个函数算是较为常用的。一般用在判断当前用户是否有权限执行某些操作或把当前用户和时间写进表。通过调用父类`BaseObject`的`getUserInfo`方法返回`CPCUserBean`实现。
+
+	public  int IDGenerator(DataCentre datacentre, String s) throws IllegalDataException
+    {    	
+    	try{
+    		String sql = "select "+ s+".nextval from dual";
+            return datacentre.intSelect(sql);
+    	}catch(Exception ex) {
+    		throw new IllegalDataException("序列"+s+"不存在或数据库操错误!");
+        }    	
+    }
+
+> 这个方法是用来返回某序列的下一个序列ID的， 参数`s`是序列名。这样子的取序列方法实际用的并不多。一般会用`DataCenter`里面的`int IDGenerator(BusinessClass paramBusinessClass, String paramString) throws DatabaseException`方法。
+这个方法需要传进一个业务类和数据库ID字段名。
+<del>并且同时要在`bill_number`类和表里有维护该字段的数据。</del>
+初次调用这个方法时，会在cpcidlist里维护表名和keyid的数据的。以后再次调用会直接读取里面的数据。
+
+其他的方法大多较为少用，有些是已经弃用的，如写日志的`public SysLog getSysLog()`等。

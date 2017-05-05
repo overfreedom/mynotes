@@ -1,0 +1,46 @@
+
+前台  ：
+   1. insert
+>引入出运申报明细      到 dgdetail2
+    >引入时把最后一条数据 根据它的路由号 查出信息 设置到界面上。
+    >当改变选中行的时候，根据它的路由号 和 ALTER_DETAILS_ID 查出信息 设置到界面上。
+
+    ×把dgdetail2 的明细行查询 设置到界面上 写一个新方法      mySetDgRowToCtrls
+    
+>填写表头数据
+>保存    tbsaveclick -> saveinformation ->tbfresh ->setformdata
+    
+
+    > saveinfromation 保存表头信息
+
+    > tbsaveclick inherited 后               
+
+    > 新写一个方法  根据bedtALTER_BATCH_ID 保存明细行    
+       > 返回保存明细的obj 更新 dgdetail2 该行明细的状态     即ALTER_DETAILS_ID 回写到dgdetail2
+
+    ×保存明细行  mySaveDetail          
+    
+   2. search 
+     > 查出来所有明细以后，把第一行明细  调用mySetDgRowToCtrls 显示到界面    
+
+
+   3. update
+    > 保存的时候都先更新一遍表头
+    > 然后根据选中行 是否有ALTER_DETAILS_ID 来选择 新增还是更新。
+   
+   4. delete
+   > 删除明细行 是   是否有ALTER_DETAILS_ID  有则到数据库删除  没有则 直接删除明细
+   > 删除一整张单  直接到数据库 按照单据id 把表头和明细表数据都删除。
+
+   
+
+   
+
+查询设置dgdetail2 表   
+
+当 界面 id 为空时   不set
+当界面id和变更后的id 一致时 不set
+
+   
+
+   
