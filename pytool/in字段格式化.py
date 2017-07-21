@@ -4,9 +4,13 @@
 @author: Administrator
 '''
 class Temp:
-    str='''S1612260144
-S1612260196
-S1612260419'''
+    str=''' 
+SOH201706300021
+SOH201706290052
+SOH201706150128
+SOH201706230115
+SOH201706170123
+SOH201706220048'''
 
 def inFormat(_str,isStr=False):
     result = 'in ('
